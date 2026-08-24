@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class OrderResponse {
   private Long id;
   private String orderNumber;
-  private List<OrderLineItemsResponse> orderLineItemsResponseList;
+  private List<OrderLineItemsResponse> orderLineItemsList;
 }

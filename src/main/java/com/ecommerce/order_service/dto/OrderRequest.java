@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class OrderRequest {
     @NotEmpty(message = "La orden debe contener al menos un item")
     @Valid 
-    private List<OrderLineItemsRequest> orderLineItemsRequestList;
+    private List<OrderLineItemsRequest> orderLineItemsList;
 }
