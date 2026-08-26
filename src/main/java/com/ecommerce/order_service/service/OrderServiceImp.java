@@ -11,8 +11,8 @@ import com.ecommerce.order_service.dto.OrderResponse;
 import com.ecommerce.order_service.exception.ResourceNotFoundException;
 import com.ecommerce.order_service.mapper.OrderMapper;
 import com.ecommerce.order_service.model.Order;
+import com.ecommerce.order_service.model.OrderLineItems;
 import com.ecommerce.order_service.repository.OrderRepository;
-
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +30,14 @@ public class OrderServiceImp implements IOrderService {
 
     log.info("Insertando nuevo pedido");
 
-    Order order = orderMapper.toOrder(orderRequest);
-
+    List<OrderLineItems> orderLineItems = orderRequest.getOrderLineItemsList()
+            .stream()
+            .map(orderMapper::toOrderLineItems)
+            .toList();
+    
+    Order order = new Order();
     order.setOrderNumber(UUID.randomUUID().toString());
+    order.setOrderLineItemsList(orderLineItems);
 
     Order savedOrder = orderRepository.save(order);
 

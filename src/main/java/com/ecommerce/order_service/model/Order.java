@@ -33,5 +33,5 @@ public class Order {
 
   @OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
   @JoinColumn(name="order_id")
-  private List<OrderLineItems> orderLineItems;
+  private List<OrderLineItems> orderLineItemsList;
 }
